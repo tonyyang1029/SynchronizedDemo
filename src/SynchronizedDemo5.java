@@ -24,7 +24,7 @@ class Account {
     public void deposit(float amount) {
         this.amount += amount;
         try {
-            Thread.sleep(100);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -33,7 +33,7 @@ class Account {
     public void withdraw(float amount) {
         this.amount -= amount;
         try {
-            Thread.sleep(100);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -53,14 +53,14 @@ class AccountOperator implements Runnable {
 
     @Override
     public void run() {
-        /*synchronized (account) {
+        synchronized (account) {
             account.deposit(500);
             account.withdraw(500);
-            System.out.println(Thread.currentThread().getName() + " : " + account.getBalance());
-        }*/
+        }
 
-        account.deposit(500);
-        account.withdraw(500);
+        /*account.deposit(500);
+        account.withdraw(500);*/
+
         System.out.println(Thread.currentThread().getName() + " : " + account.getBalance());
     }
 }
